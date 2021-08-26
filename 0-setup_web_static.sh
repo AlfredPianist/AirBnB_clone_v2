@@ -22,11 +22,11 @@ printf "\
 sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
 
 # Give ownership of the /data/ folder to the ubuntu user and group recursively
-sudo chown -R ubuntu:ubuntu /data
+sudo chown -R ubuntu:ubuntu /data/
 
 # Update the nginx config to serve the content of /data/web_static/current/
 #   to hbnb_static.
-sudo sed -i "/server_name _;/a \\\n\\tlocation /hbnb_static {\\n\\t\\talias /data/web_static/current/;\\n\\t}"\
+sudo sed -i "/listen 80 default_server;/a \\\n\\tlocation /hbnb_static {\\n\\t\\talias /data/web_static/current/;\\n\\t}"\
        	/etc/nginx/sites-available/default
 
 # Restart nginx
