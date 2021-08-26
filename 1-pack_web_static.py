@@ -17,7 +17,7 @@ def do_pack():
     except FileExistsError:
         pass
 
-    print('Packing web_static to {}'.format(filepath))
+    print("Packing web_static to {}".format(filepath))
     cmd = local('tar -cvzf {} web_static'.format(filepath))
     if (cmd.return_code == 0):
         filesize = path.getsize(filepath)
