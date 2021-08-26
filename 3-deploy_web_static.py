@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """Module that deploys the contents of web_static to the server"""
-from fabric.api import local, hosts, put, run, runs_once
+from fabric.api import local, hosts, put, run, env, runs_once
+
+env.hosts = ['34.75.153.110', '18.208.193.84']
 
 
 @runs_once
@@ -27,7 +29,6 @@ def do_pack():
     return None
 
 
-@hosts('34.75.153.110', '18.208.193.84')
 def do_deploy(archive_path):
     """Distributes an archive to the web servers."""
     from os import path
@@ -55,7 +56,6 @@ def do_deploy(archive_path):
         return False
 
 
-@hosts('34.75.153.110', '18.208.193.84')
 def deploy():
     """Creates and distributes an archive to the web servers."""
     filepath = do_pack()
