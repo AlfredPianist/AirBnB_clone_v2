@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 """Module that deploys the contents of web_static to the server"""
-from fabric.api import local, hosts, put, run, env, runs_once
+from fabric.api import local, hosts, put, run, env
 
 env.hosts = ['34.75.153.110', '18.208.193.84']
 
 
-@runs_once
 def do_pack():
     """Packs contents of web_static as a .tgz and returns its filepath."""
     from os import mkdir, path
@@ -41,8 +40,8 @@ def do_deploy(archive_path):
     dest_path = "/data/web_static/releases/{}/".format(filename.split('.')[0])
 
     try:
-        print("Executing task do_deploy")
-        put(archive_path, "/tmp/{}".format(filename))
+        print("Executing task 'do_deploy'")
+        put(archive_path, "/tmp/")
         run('mkdir -p {}'.format(dest_path))
         run('tar -xzf /tmp/{} -C {}'.format(filename, dest_path))
         run('rm /tmp/{}'.format(filename))
