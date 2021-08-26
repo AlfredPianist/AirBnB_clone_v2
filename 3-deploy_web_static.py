@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 """Module that deploys the contents of web_static to the server"""
-from fabric.api import local, hosts, put, run, env, runs_once
+from fabric.api import local, hosts, put, run, env
 
 env.hosts = ['34.75.153.110', '18.208.193.84']
 
 
-@runs_once
 def do_pack():
     """Packs contents of web_static as a .tgz and returns its filepath."""
     from os import mkdir, path
