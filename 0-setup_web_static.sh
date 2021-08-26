@@ -5,7 +5,7 @@
 sudo apt update && sudo apt install nginx -y
 
 # Create directories for deployment
-sudo mkdir -p /data/web_static/{shared,releases/test}
+sudo mkdir -p /data/web_static/{releases/test,shared}
 
 # Create a fake HTML for testing nginx configuration
 printf "\
@@ -16,10 +16,10 @@ printf "\
     Holberton School
   </body>
 </html>
-" | sudo dd of=/data/web_static/releases/test/index.html oflag=append conv=notrunc 
+" | sudo tee /data/web_static/releases/test/index.html 
 
 # Create a symlink linked to the /data/web_static/releases/test/ folder
-ln -sf /data/web_static/releases/test/ /data/web_static/current
+sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
 
 # Give ownership of the /data/ folder to the ubuntu user and group recursively
 sudo chown -R ubuntu:ubuntu /data
