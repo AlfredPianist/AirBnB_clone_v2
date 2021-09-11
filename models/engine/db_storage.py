@@ -43,14 +43,17 @@ class DBStorage:
         q_dict = {}
 
         if cls:
-            for obj in self.__session.query(classes[cls]).all():
-                q_dict[cls + '.' + obj.id] = obj
+            if type(cls) == str:
+                for obj in self.__session.query(classes[cls]).all():
+                    q_dict[cls + '.' + obj.id] = obj
+            else:
+                for obj in self.__session.query(cls).all():
+                    q_dict[cls.__name__ + '.' + obj.id] = obj
         else:
             for cls_name, cls_val in classes.items():
                 for obj in self.__session.query(cls_val).all():
                     q_dict[cls_name + '.' + obj.id] = obj
 
-        self.reload()
         return q_dict
 
     def new(self, obj):
@@ -75,3 +78,7 @@ class DBStorage:
         Session = scoped_session(sessionmaker(bind=self.__engine,
                                               expire_on_commit=False))
         self.__session = Session()
+
+    def close(self):
+        """Closes connection"""
+        self.__session.close()
