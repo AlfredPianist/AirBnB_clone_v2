@@ -21,7 +21,7 @@ def hbnb_index():
 @app.route("/c/<text>", strict_slashes=False)
 def c_index(text):
     """Returns 'C <text>' on route /c"""
-    return "C {}".format(text)
+    return "C {}".format(text.replace('_', ' '))
 
 
 @app.route("/python", strict_slashes=False)
