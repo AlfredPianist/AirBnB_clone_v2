@@ -7,32 +7,32 @@ app = Flask(__name__)
 
 
 @app.route("/", strict_slashes=False)
-def index():
-    """Returns 'Hello, HBNB!' on the main index route"""
+def route():
+    """Returns 'Hello, HBNB!' on the main route route"""
     return "Hello HBNB!"
 
 
 @app.route("/hbnb", strict_slashes=False)
-def hbnb_index():
+def hbnb_route():
     """Returns 'HBNB' on route /hbnb"""
     return "HBNB"
 
 
 @app.route("/c/<text>", strict_slashes=False)
-def c_index(text):
+def c_route(text):
     """Returns 'C <text>' on route /c"""
     return "C {}".format(text.replace('_', ' '))
 
 
 @app.route("/python", strict_slashes=False)
 @app.route("/python/<text>", strict_slashes=False)
-def python_index(text='is cool'):
+def python_route(text='is cool'):
     """Returns 'Python <text>' on route /python"""
     return "Python {}".format(text.replace('_', ' '))
 
 
 @app.route("/number/<int:n>", strict_slashes=False)
-def number_index(n):
+def number_route(n):
     """Returns '<n> is a number' on route /number/ if n is integer"""
     return "{:d} is a number".format(n)
 
