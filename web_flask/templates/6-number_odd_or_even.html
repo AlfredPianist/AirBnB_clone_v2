@@ -5,6 +5,10 @@
     <title>HBNB</title>
 </head>
 <body>
-    <h1>Number: {{ n }} is {{ div_2_bool }}</h1>
+    {% if n is even %}
+        <h1>Number: {{ n }} is even</h1>
+    {% else %}
+        <h1>Number: {{ n }} is odd</h1>
+    {% endif %}
 </body>
 </html>
