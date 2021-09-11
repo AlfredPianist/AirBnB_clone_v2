@@ -39,10 +39,9 @@ def number_route(n):
 
 @app.route("/number_template/<int:n>", strict_slashes=False)
 def number_template(n):
-    """Returns '<n> is a number' on route /number/ if n is integer,
-    as template"""
+    """Returns '<n> is a number' as template"""
     return render_template("5-number.html", n=n)
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port="5000")
+    app.run(debug=True, host="0.0.0.0", port="5000")
