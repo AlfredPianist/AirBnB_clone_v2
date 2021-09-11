@@ -27,14 +27,14 @@ def c_index(text):
 @app.route("/python", strict_slashes=False)
 @app.route("/python/<text>", strict_slashes=False)
 def python_index(text='is cool'):
-    """Returns 'Python <text>' on route /c"""
+    """Returns 'Python <text>' on route /python"""
     return "Python {}".format(text.replace('_', ' '))
 
 
 @app.route("/number/<int:n>", strict_slashes=False)
 def number_index(n):
-    """Returns 'n is a number' on route /number/ if n is integer"""
-    return "n is a number"
+    """Returns '<n> is a number' on route /number/ if n is integer"""
+    return "{:d} is a number".format(n)
 
 
 if __name__ == '__main__':
