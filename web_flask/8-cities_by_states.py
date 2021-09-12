@@ -14,7 +14,7 @@ def close(self):
     storage.close()
 
 
-@app.route("/states", strict_slashes=False)
+@app.route("/cities_by_states", strict_slashes=False)
 def states_cities():
     """Returns a list of state objects"""
 
