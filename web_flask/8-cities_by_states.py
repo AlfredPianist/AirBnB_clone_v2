@@ -17,9 +17,8 @@ def close(self):
 @app.route("/cities_by_states", strict_slashes=False)
 def states_cities():
     """Returns a list of state objects"""
-
-    return render_template("8-cities_by_states.html",
-                           states=storage.all(State))
+    states = storage.all(State)
+    return render_template("8-cities_by_states.html", states=states)
 
 
 if __name__ == '__main__':
